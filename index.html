@@ -128,7 +128,7 @@ li{
   margin-top:20px;
   font-size:18px;
   font-weight:bold;
-  line-height:1.6;
+  line-height:1.8;
 }
 
 /* INFO */
@@ -183,20 +183,52 @@ li{
 <button onclick="tambahMenu('Mie Goreng',12000,'mie',true)">Tambah</button>
 </div>
 
+<div class="card"><h2>🍗 Ayam Geprek</h2><div class="harga">Rp18.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="ayam"><button onclick="tambahMenu('Ayam Geprek',18000,'ayam',true)">Tambah</button></div>
+
+<div class="card"><h2>🍲 Bakso</h2><div class="harga">Rp14.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="bakso"><button onclick="tambahMenu('Bakso',14000,'bakso',true)">Tambah</button></div>
+
+<div class="card"><h2>🍕 Pizza</h2><div class="harga">Rp25.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="pizza"><button onclick="tambahMenu('Pizza',25000,'pizza',true)">Tambah</button></div>
+
+<div class="card"><h2>🌭 Hot Dog</h2><div class="harga">Rp17.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="hotdog"><button onclick="tambahMenu('Hot Dog',17000,'hotdog',true)">Tambah</button></div>
+
+<div class="card"><h2>🍟 Kentang Goreng</h2><div class="harga">Rp11.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="kentang"><button onclick="tambahMenu('Kentang Goreng',11000,'kentang',true)">Tambah</button></div>
+
+<div class="card"><h2>🍩 Donat</h2><div class="harga">Rp6.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="donat"><button onclick="tambahMenu('Donat',6000,'donat',true)">Tambah</button></div>
+
+<div class="card"><h2>🥪 Sandwich</h2><div class="harga">Rp16.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="sandwich"><button onclick="tambahMenu('Sandwich',16000,'sandwich',true)">Tambah</button></div>
+
+<div class="card"><h2>🍜 Seblak</h2><div class="harga">Rp13.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="seblak"><button onclick="tambahMenu('Seblak',13000,'seblak',true)">Tambah</button></div>
+
+<div class="card"><h2>🍛 Soto Ayam</h2><div class="harga">Rp15.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="soto"><button onclick="tambahMenu('Soto Ayam',15000,'soto',true)">Tambah</button></div>
+
+<div class="card"><h2>🍢 Sate Ayam</h2><div class="harga">Rp20.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="sate"><button onclick="tambahMenu('Sate Ayam',20000,'sate',true)">Tambah</button></div>
+
+<div class="card"><h2>🍞 Roti Bakar</h2><div class="harga">Rp10.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="roti"><button onclick="tambahMenu('Roti Bakar',10000,'roti',true)">Tambah</button></div>
+
+<div class="card"><h2>🥤 Es Teh</h2><div class="harga">Rp5.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="esteh"><button onclick="tambahMenu('Es Teh',5000,'esteh',true)">Tambah</button></div>
+
+<div class="card"><h2>🧋 Thai Tea</h2><div class="harga">Rp8.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="thaitea"><button onclick="tambahMenu('Thai Tea',8000,'thaitea',true)">Tambah</button></div>
+
+<div class="card"><h2>🥑 Jus Alpukat</h2><div class="harga">Rp10.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="jus"><button onclick="tambahMenu('Jus Alpukat',10000,'jus',true)">Tambah</button></div>
+
+<div class="card"><h2>🍹 Jus Mangga</h2><div class="harga">Rp10.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="mangga"><button onclick="tambahMenu('Jus Mangga',10000,'mangga',true)">Tambah</button></div>
+
+<div class="card"><h2>🍧 Es Campur</h2><div class="harga">Rp9.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="escampur"><button onclick="tambahMenu('Es Campur',9000,'escampur',true)">Tambah</button></div>
+
+<div class="card"><h2>🍌 Pisang Goreng</h2><div class="harga">Rp7.000</div><div class="stok tersedia">Tersedia</div><input type="number" id="pisang"><button onclick="tambahMenu('Pisang Goreng',7000,'pisang',true)">Tambah</button></div>
+
 </div>
 </div>
 
 <!-- KERANJANG -->
 <div id="keranjang" class="page">
-
 <div class="keranjang">
+
 <h2>🛒 Keranjang</h2>
 
 <ul id="listPesanan"></ul>
 
-<div class="total">
-Total : Rp <span id="total">0</span>
-</div>
+<div class="total">Total : Rp <span id="total">0</span></div>
 
 <h3>💳 Metode Pembayaran</h3>
 <select id="metode">
@@ -265,7 +297,7 @@ function tambahMenu(nama,harga,idInput,tersedia){
   li.innerHTML = `${nama} x ${jumlah} = Rp ${subtotal.toLocaleString('id-ID')}`;
 
   document.getElementById("listPesanan").appendChild(li);
-  document.getElementById("total").innerText = total;
+  document.getElementById("total").innerText = total.toLocaleString('id-ID');
 
   document.getElementById(idInput).value = "";
 
