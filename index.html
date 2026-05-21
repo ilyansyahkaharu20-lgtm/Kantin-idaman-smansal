@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kantin Idaman</title>
+<title>Kantin Idaman Sekolah</title>
 
 <style>
 
@@ -20,28 +20,32 @@ body{
   min-height:100vh;
 }
 
+/* HEADER */
+
 header{
   background:#ffcc00;
   padding:20px;
   text-align:center;
-  color:#6b4d00;
   font-size:35px;
   font-weight:bold;
+  color:#6b4d00;
   box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
+
+/* NAVBAR */
 
 nav{
   display:flex;
   justify-content:center;
   gap:15px;
-  padding:15px;
   flex-wrap:wrap;
+  padding:15px;
 }
 
 nav button{
   padding:12px 20px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   background:white;
   cursor:pointer;
   font-weight:bold;
@@ -52,6 +56,8 @@ nav button:hover{
   background:#ffe066;
 }
 
+/* HALAMAN */
+
 .page{
   display:none;
   padding:20px;
@@ -60,6 +66,8 @@ nav button:hover{
 .active{
   display:block;
 }
+
+/* MENU */
 
 .menu-container{
   display:grid;
@@ -126,6 +134,8 @@ button:hover{
   background:#ffb300;
 }
 
+/* KERANJANG */
+
 .keranjang{
   background:white;
   padding:25px;
@@ -169,6 +179,8 @@ li{
   font-weight:bold;
 }
 
+/* INFO */
+
 .info{
   background:white;
   padding:30px;
@@ -194,12 +206,27 @@ li{
 </header>
 
 <nav>
-<button onclick="bukaHalaman('menu')">🍱 Menu</button>
-<button onclick="bukaHalaman('keranjang')">🛒 Keranjang</button>
-<button onclick="bukaHalaman('tentang')">🏫 Tentang Kantin</button>
+
+<button onclick="bukaHalaman('menu')">
+🍱 Menu
+</button>
+
+<button onclick="bukaHalaman('keranjang')">
+🛒 Keranjang
+</button>
+
+<button onclick="bukaHalaman('antrian')">
+📢 Antrian
+</button>
+
+<button onclick="bukaHalaman('tentang')">
+🏫 Tentang
+</button>
+
 </nav>
 
 <!-- HALAMAN MENU -->
+
 <div id="menu" class="page active">
 
 <div class="menu-container">
@@ -332,10 +359,27 @@ li{
 <button onclick="tambahMenu('Sate Ayam',20000,'sate',true)">Tambah</button>
 </div>
 
+<div class="card">
+<h2>🍞 Roti Bakar</h2>
+<div class="harga">Rp10.000</div>
+<div class="stok tersedia">Tersedia</div>
+<input type="number" id="roti">
+<button onclick="tambahMenu('Roti Bakar',10000,'roti',true)">Tambah</button>
+</div>
+
+<div class="card">
+<h2>🍧 Es Campur</h2>
+<div class="harga">Rp9.000</div>
+<div class="stok tersedia">Tersedia</div>
+<input type="number" id="escampur">
+<button onclick="tambahMenu('Es Campur',9000,'escampur',true)">Tambah</button>
+</div>
+
 </div>
 </div>
 
 <!-- HALAMAN KERANJANG -->
+
 <div id="keranjang" class="page">
 
 <div class="keranjang">
@@ -367,9 +411,35 @@ Bayar Sekarang
 <div class="hasil" id="hasil"></div>
 
 </div>
+
+</div>
+
+<!-- HALAMAN ANTRIAN -->
+
+<div id="antrian" class="page">
+
+<div class="info">
+
+<h2>📢 Status Pesanan</h2>
+
+<div id="statusPesanan"
+style="
+font-size:22px;
+line-height:2;
+margin-top:20px;
+font-weight:bold;
+">
+
+Belum ada pesanan.
+
+</div>
+
+</div>
+
 </div>
 
 <!-- HALAMAN TENTANG -->
+
 <div id="tentang" class="page">
 
 <div class="info">
@@ -378,15 +448,16 @@ Bayar Sekarang
 
 <p>
 Kantin Idaman adalah aplikasi pemesanan makanan kantin sekolah.
-Siswa dapat memilih makanan, melihat stok makanan,
-melakukan pembayaran menggunakan Cash, Debit, atau QRIS,
-dan mendapatkan nomor antrian otomatis.
+Siswa dapat memesan makanan, melihat stok makanan,
+melakukan pembayaran dengan Cash, Debit, atau QRIS,
+serta mendapatkan nomor antrian otomatis.
 </p>
 
 <br>
 
 <p>
-📢 Jika pesanan selesai dibuat, nomor antrian akan dipanggil.
+📢 Jika pesanan selesai dibuat,
+nomor antrian akan dipanggil.
 </p>
 
 </div>
@@ -396,6 +467,7 @@ dan mendapatkan nomor antrian otomatis.
 <script>
 
 let total = 0;
+
 let nomorPesanan = Math.floor(Math.random()*900)+100;
 
 function bukaHalaman(id){
@@ -412,14 +484,18 @@ function bukaHalaman(id){
 function tambahMenu(nama,harga,idInput,tersedia){
 
   if(!tersedia){
+
     alert("❌ Menu sedang habis!");
+
     return;
   }
 
   let jumlah = parseInt(document.getElementById(idInput).value);
 
   if(!jumlah || jumlah <= 0){
+
     alert("Masukkan jumlah!");
+
     return;
   }
 
@@ -449,12 +525,16 @@ function bayar(){
   let metode = document.getElementById("metode").value;
 
   if(total <= 0){
+
     alert("Keranjang masih kosong!");
+
     return;
   }
 
   if(!uang || uang <= 0){
+
     alert("Masukkan uang / saldo!");
+
     return;
   }
 
@@ -483,10 +563,38 @@ function bayar(){
 
     💸 Kembalian : Rp ${kembalian.toLocaleString('id-ID')}<br><br>
 
-    🍳 Pesanan sedang dibuat...<br>
-
-    📢 Nomor antrian ${nomorPesanan} silakan menunggu dipanggil.
+    🙏 Terima kasih sudah memesan di Kantin Idaman!
     `;
+
+    document.getElementById("statusPesanan").innerHTML =
+    `
+    🍳 Pesanan sedang dibuat...<br><br>
+
+    📢 Nomor antrian <b>${nomorPesanan}</b>
+    silakan menunggu dipanggil.<br><br>
+
+    🙏 Terima kasih sudah memesan di
+    <span style="color:#ff9900;">
+    Kantin Idaman
+    </span>
+    `;
+
+    bukaHalaman('antrian');
+
+    setTimeout(()=>{
+
+      document.getElementById("statusPesanan").innerHTML =
+      `
+      ✅ Pesanan nomor <b>${nomorPesanan}</b>
+      sudah siap diambil!<br><br>
+
+      🍔 Silakan menuju kasir kantin.<br><br>
+
+      🙏 Terima kasih sudah memesan.
+      `;
+
+    },5000);
+
   }
 }
 
