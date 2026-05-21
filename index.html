@@ -481,11 +481,15 @@ function bukaHalaman(id){
   document.getElementById(id).classList.add("active");
 }
 
+/* TAMBAH MENU */
+
 function tambahMenu(nama,harga,idInput,tersedia){
 
   if(!tersedia){
 
-    alert("❌ Menu sedang habis!");
+    alert("❌ Menu sedang habis!\nKembali ke daftar menu.");
+
+    bukaHalaman('menu');
 
     return;
   }
@@ -516,7 +520,12 @@ function tambahMenu(nama,harga,idInput,tersedia){
   total.toLocaleString('id-ID');
 
   document.getElementById(idInput).value = "";
+
+  alert("✅ Menu berhasil ditambahkan ke keranjang!");
+
 }
+
+/* BAYAR */
 
 function bayar(){
 
@@ -526,7 +535,9 @@ function bayar(){
 
   if(total <= 0){
 
-    alert("Keranjang masih kosong!");
+    alert("🛒 Keranjang masih kosong!");
+
+    bukaHalaman('menu');
 
     return;
   }
@@ -543,8 +554,16 @@ function bayar(){
     document.getElementById("hasil").innerHTML =
     `
     ❌ Pembayaran gagal!<br>
-    Uang / saldo tidak cukup.
+    Uang / saldo tidak cukup.<br><br>
+
+    🔄 Silakan ubah metode pembayaran
+    atau tambah saldo.
     `;
+
+    alert("❌ Uang tidak cukup!\nSilakan ubah metode pembayaran.");
+
+    bukaHalaman('keranjang');
+
   }
 
   else{
