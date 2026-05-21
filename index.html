@@ -3,144 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Kantin Idaman Sekolah</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:linear-gradient(135deg,#fff200,#ffd000,#ffb300);min-height:100vh}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
-
-body{
-  background:linear-gradient(135deg,#fff200,#ffd000,#ffb300);
-  min-height:100vh;
-}
-
-/* HEADER */
 header{
   background:#ffcc00;
   padding:20px;
   text-align:center;
-  font-size:35px;
+  font-size:30px;
   font-weight:bold;
-  color:#6b4d00;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* NAV */
 nav{
   display:flex;
   justify-content:center;
-  gap:15px;
+  gap:10px;
   flex-wrap:wrap;
-  padding:15px;
+  padding:10px;
 }
 
 nav button{
-  padding:12px 20px;
+  padding:10px 15px;
   border:none;
-  border-radius:12px;
+  border-radius:10px;
   background:white;
   cursor:pointer;
   font-weight:bold;
 }
 
-nav button:hover{
-  background:#ffe066;
-}
+.page{display:none;padding:20px}
+.active{display:block}
 
-/* PAGE */
-.page{display:none;padding:20px;}
-.active{display:block;}
-
-/* MENU */
 .menu-container{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
 }
 
 .card{
   background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  padding:15px;
+  border-radius:15px;
 }
 
-.card h2{color:#ff9900;margin-bottom:10px;}
+.harga{font-weight:bold;margin:5px 0}
 
-.harga{font-size:20px;font-weight:bold;}
+.tersedia{color:green}
+.habis{color:red}
 
-.stok{font-weight:bold;margin-bottom:10px;}
-
-.tersedia{color:green;}
-.habis{color:red;}
-
-input,select{
+input,select,button{
   width:100%;
   padding:10px;
-  border-radius:10px;
-  border:1px solid #ccc;
-  margin-top:10px;
+  margin-top:8px;
+  border-radius:8px;
 }
 
-button{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  margin-top:10px;
-  background:#ffd000;
-  font-weight:bold;
-  cursor:pointer;
-}
+button{background:#ffd000;border:none;font-weight:bold;cursor:pointer}
+button:hover{background:#ffb300}
 
-button:hover{background:#ffb300;}
-
-/* KERANJANG */
 .keranjang{
   background:white;
-  padding:25px;
-  border-radius:20px;
-  max-width:800px;
+  padding:20px;
+  border-radius:15px;
+  max-width:700px;
   margin:auto;
 }
-
-ul{list-style:none;margin-top:20px;}
 
 li{
   background:#fff6b0;
-  padding:10px;
-  border-radius:10px;
-  margin-bottom:10px;
+  margin:5px 0;
+  padding:8px;
+  border-radius:8px;
 }
 
-.total{margin-top:20px;font-size:25px;font-weight:bold;}
+.total{font-size:20px;font-weight:bold;margin-top:10px}
 
-.bayar{background:#00c853;color:white;}
-.bayar:hover{background:#00a844;}
+.hasil{margin-top:15px;font-weight:bold}
 
-.hasil{
-  margin-top:20px;
-  font-size:18px;
-  font-weight:bold;
-  line-height:1.6;
-}
-
-/* INFO */
 .info{
   background:white;
-  padding:30px;
-  border-radius:20px;
-  max-width:800px;
-  margin:auto;
+  padding:20px;
+  border-radius:15px;
   text-align:center;
 }
-
 </style>
 </head>
 
@@ -149,10 +97,10 @@ li{
 <header>🍔 KANTIN IDAMAN SEKOLAH 🍟</header>
 
 <nav>
-<button onclick="bukaHalaman('menu')">🍱 Menu</button>
-<button onclick="bukaHalaman('keranjang')">🛒 Keranjang</button>
-<button onclick="bukaHalaman('antrian')">📢 Antrian</button>
-<button onclick="bukaHalaman('tentang')">🏫 Tentang</button>
+<button onclick="bukaHalaman('menu')">Menu</button>
+<button onclick="bukaHalaman('keranjang')">Keranjang</button>
+<button onclick="bukaHalaman('antrian')">Antrian</button>
+<button onclick="bukaHalaman('tentang')">Tentang</button>
 </nav>
 
 <!-- MENU -->
@@ -160,25 +108,25 @@ li{
 <div class="menu-container">
 
 <div class="card">
-<h2>🍚 Nasi Goreng</h2>
+<h3>Nasi Goreng</h3>
 <div class="harga">Rp15.000</div>
-<div class="stok tersedia">Tersedia</div>
+<div class="tersedia">Tersedia</div>
 <input type="number" id="nasi">
 <button onclick="tambahMenu('Nasi Goreng',15000,'nasi',true)">Tambah</button>
 </div>
 
 <div class="card">
-<h2>🍔 Burger</h2>
+<h3>Burger</h3>
 <div class="harga">Rp22.000</div>
-<div class="stok habis">Stok Habis</div>
+<div class="habis">Habis</div>
 <input type="number" id="burger">
 <button onclick="tambahMenu('Burger',22000,'burger',false)">Tambah</button>
 </div>
 
 <div class="card">
-<h2>🍜 Mie Goreng</h2>
+<h3>Mie Goreng</h3>
 <div class="harga">Rp12.000</div>
-<div class="stok tersedia">Tersedia</div>
+<div class="tersedia">Tersedia</div>
 <input type="number" id="mie">
 <button onclick="tambahMenu('Mie Goreng',12000,'mie',true)">Tambah</button>
 </div>
@@ -190,24 +138,24 @@ li{
 <div id="keranjang" class="page">
 
 <div class="keranjang">
-<h2>🛒 Keranjang</h2>
+<h2>Keranjang</h2>
 
 <ul id="listPesanan"></ul>
 
 <div class="total">
-Total : Rp <span id="total">0</span>
+Total: Rp <span id="total">0</span>
 </div>
 
-<h3>💳 Metode Pembayaran</h3>
+<h3>Pembayaran</h3>
 <select id="metode">
 <option>Cash</option>
 <option>Debit</option>
 <option>QRIS</option>
 </select>
 
-<input type="number" id="uang" placeholder="Masukkan uang">
+<input type="number" id="uang" placeholder="Uang / saldo">
 
-<button class="bayar" onclick="bayar()">Bayar</button>
+<button onclick="bayar()">Bayar</button>
 
 <div class="hasil" id="hasil"></div>
 
@@ -217,7 +165,7 @@ Total : Rp <span id="total">0</span>
 <!-- ANTRIAN -->
 <div id="antrian" class="page">
 <div class="info">
-<h2>📢 Status Pesanan</h2>
+<h2>Status Pesanan</h2>
 <div id="statusPesanan">Belum ada pesanan</div>
 </div>
 </div>
@@ -226,7 +174,7 @@ Total : Rp <span id="total">0</span>
 <div id="tentang" class="page">
 <div class="info">
 <h2>Tentang Kantin</h2>
-<p>Aplikasi pemesanan kantin sekolah sederhana.</p>
+<p>Aplikasi kantin sekolah sederhana.</p>
 </div>
 </div>
 
@@ -244,9 +192,12 @@ function bukaHalaman(id){
 function tambahMenu(nama,harga,idInput,tersedia){
 
   if(!tersedia){
+
     document.getElementById("hasil").innerHTML =
-    "❌ Menu <b>"+nama+"</b> sedang habis!";
+    "❌ <b>"+nama+"</b> sedang HABIS!";
+
     alert("Menu habis!");
+
     bukaHalaman('menu');
     return;
   }
@@ -265,7 +216,7 @@ function tambahMenu(nama,harga,idInput,tersedia){
   li.innerHTML = `${nama} x ${jumlah} = Rp ${subtotal.toLocaleString('id-ID')}`;
 
   document.getElementById("listPesanan").appendChild(li);
-  document.getElementById("total").innerText = total;
+  document.getElementById("total").innerText = total.toLocaleString('id-ID');
 
   document.getElementById(idInput).value = "";
 
@@ -305,19 +256,16 @@ function bayar(){
   let kembalian = uang - total;
 
   document.getElementById("hasil").innerHTML =
-  `✅ Berhasil!<br>
-  Total: Rp ${total}<br>
-  Kembalian: Rp ${kembalian}<br>
-  Metode: ${metode}`;
+  `✔ Pembayaran berhasil<br>Total: Rp ${total}<br>Kembalian: Rp ${kembalian}`;
 
   document.getElementById("statusPesanan").innerHTML =
-  `📢 Nomor ${nomorPesanan} sedang diproses...`;
+  `Pesanan ${nomorPesanan} diproses...`;
 
   bukaHalaman('antrian');
 
   setTimeout(()=>{
     document.getElementById("statusPesanan").innerHTML =
-    `✅ Pesanan ${nomorPesanan} siap diambil!`;
+    `Pesanan ${nomorPesanan} siap diambil!`;
   },4000);
 
 }
